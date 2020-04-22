@@ -1,0 +1,18 @@
+{% extends 'register/base.html' %}
+{% load crispy_forms_tags %} <!--carrega o crispy-->
+{% block content %}
+<form action="" method="POST" autocomplete="off">
+    {% csrf_token %} <!--evita fraudes de páginas semelhantes-->
+    {{ form.nome|as_crispy_field }} <!--formata a coluna da tabela no template escolhido pelo crispy-->
+    {{ form.telefone|as_crispy_field }}
+    <div class="row">
+        <div class="col-md-4">
+            {{ form.cpf|as_crispy_field }}
+        </div>
+        <div class="col-md-8">
+            {{ form.profissao|as_crispy_field }}
+        </div>
+    </div>
+    <button class="btn btn-block btn-success block" type="submit">Registrar</button>
+</form>
+{% endblock content %}
